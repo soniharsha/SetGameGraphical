@@ -10,15 +10,10 @@ import UIKit
 
 class CardView: UIView {
     
-    var shape: String?
-    var color: UIColor?
-    var number: CGFloat?
-    var shade: String?
-    
-    init() {
-        
-        super.init()
-    }
+    var shape: String? = "Circle"
+    var color: UIColor? = UIColor.red
+    var number: CGFloat? = 3.0
+    var shade: String? = "Strip"
     
     func fillColor(at path: UIBezierPath, _ color: UIColor, with shade: String){
         path.addClip()

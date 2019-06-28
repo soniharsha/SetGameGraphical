@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadInitialCards()
+        //loadInitialCards()
     }
     
     override func viewDidLayoutSubviews() {
@@ -25,12 +25,12 @@ class ViewController: UIViewController {
         resetGrid()
     }
     
-    func loadInitialCards() {
-        for counts in 0..<grid.cellCount {
-            let frame = grid[counts]!
-            
-        }
-    }
+//    func loadInitialCards() {
+//        for counts in 0..<grid.cellCount {
+//            let frame = grid[counts]!
+//
+//        }
+//    }
     
     func resetGrid() {
         let cardsInARow = 4
