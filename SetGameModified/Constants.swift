@@ -11,5 +11,6 @@ import UIKit
 struct Constants {
     static let initialRow = 4
     static let initialColumn = 3
+    static let noOfCardToDraw = 3
 }
 
