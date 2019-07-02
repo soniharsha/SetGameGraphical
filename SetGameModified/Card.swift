@@ -9,20 +9,23 @@
 import Foundation
 import UIKit
 
-struct Card {
+struct Card: Equatable {
+    
     enum Shape: CaseIterable {
         case square, circle, triangle
+        
         var value: String {
             switch self {
             case .square: return "Square"
             case .circle: return "Circle"
-            case .triangle: return "Triangle"
+            case .triangle: return "Star"
             }
         }
     }
     
     enum Shade: CaseIterable {
         case fill, outline, strip
+        
         var value: String {
             switch self {
             case .fill: return "Fill"
@@ -34,6 +37,7 @@ struct Card {
     
     enum Color: CaseIterable {
         case red, black, green
+        
         var value: UIColor {
             switch self {
             case .red: return UIColor.red
@@ -43,13 +47,22 @@ struct Card {
         }
     }
     
-    enum Number:CGFloat, CaseIterable {
-        case one = 1, two, three
+    enum Number: CaseIterable {
+        case one, two, three
+        
+        var value: CGFloat {
+            switch self {
+            case .one: return 1
+            case .two: return 2
+            case .three: return 3
+            }
+        }
     }
     
     var shape: Shape
     var color: Color
     var shade: Shade
     var number: Number
+    
 }
 
