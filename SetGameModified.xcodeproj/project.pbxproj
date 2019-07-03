@@ -68,18 +68,13 @@
 		3AF870EB22C376CB00EE1FA9 /* SetGameModified */ = {
 			isa = PBXGroup;
 			children = (
-				3A14891622C624A900071C5A /* SetGame.swift */,
+				3AF8E09122CB2DAD007D0201 /* Models */,
+				3AF8E09222CB2DC3007D0201 /* Views */,
+				3AF8E09322CB2DD1007D0201 /* Utilities */,
+				3AF8E09422CB2DE5007D0201 /* Resources */,
 				3AF870EE22C376CB00EE1FA9 /* ViewController.swift */,
-				3AF870FF22C3778700EE1FA9 /* Card.swift */,
-				3AF8712422C4A23A00EE1FA9 /* PlayingCardView.swift */,
-				3AF8712622C4A4B500EE1FA9 /* CardView.swift */,
-				3A14891822C62AF200071C5A /* IntExtension.swift */,
-				3A14891A22C62B3300071C5A /* Grid.swift */,
-				3AF8712822C4A55300EE1FA9 /* Constants.swift */,
 				3AF870F022C376CB00EE1FA9 /* Main.storyboard */,
-				3AF870F322C376CD00EE1FA9 /* Assets.xcassets */,
 				3AF870FE22C376FC00EE1FA9 /* Supporting Files */,
-				3AF870F822C376CD00EE1FA9 /* Info.plist */,
 			);
 			path = SetGameModified;
 			sourceTree = "<group>";
@@ -91,6 +86,43 @@
 				3AF870F522C376CD00EE1FA9 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3AF8E09122CB2DAD007D0201 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A14891622C624A900071C5A /* SetGame.swift */,
+				3AF870FF22C3778700EE1FA9 /* Card.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3AF8E09222CB2DC3007D0201 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3AF8712422C4A23A00EE1FA9 /* PlayingCardView.swift */,
+				3AF8712622C4A4B500EE1FA9 /* CardView.swift */,
+				3A14891A22C62B3300071C5A /* Grid.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3AF8E09322CB2DD1007D0201 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3A14891822C62AF200071C5A /* IntExtension.swift */,
+				3AF8712822C4A55300EE1FA9 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3AF8E09422CB2DE5007D0201 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AF870F322C376CD00EE1FA9 /* Assets.xcassets */,
+				3AF870F822C376CD00EE1FA9 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6WCD67RXUP;
-				INFOPLIST_FILE = SetGameModified/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SetGameModified/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6WCD67RXUP;
-				INFOPLIST_FILE = SetGameModified/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SetGameModified/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -14,6 +14,7 @@ struct Constants {
         static let initialColumn = 3
         static let noOfCardToDraw = 3
         static let pointEarnedForSet = 3
+        static let totalCard = 81
     }
     struct Color {
         static let backgroundColor = UIColor.white

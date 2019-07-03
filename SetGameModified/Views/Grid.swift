@@ -10,8 +10,7 @@ import Foundation
 
 import UIKit
 
-struct Grid
-{
+struct Grid {
     enum Layout {
         case fixedCellSize(CGSize)
         case dimensions(rowCount: Int, columnCount: Int)

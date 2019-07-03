@@ -10,7 +10,6 @@ import Foundation
 
 extension Int {
     var random4arc: Int {
-        return Int(arc4random_uniform(UInt32(3)))
+        return Int(arc4random_uniform(UInt32(self)))
     }
-    
 }

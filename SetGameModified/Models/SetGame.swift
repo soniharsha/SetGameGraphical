@@ -14,6 +14,8 @@ struct SetGame {
     private let date = Date()
     private lazy var lastNotedTime = date.timeIntervalSinceNow
     
+    var hintEnabled = false
+    
     mutating func draw() -> Card? {
         if cards.isEmpty { return nil }
         return cards.remove(at: cards.count.random4arc)
@@ -24,20 +26,38 @@ struct SetGame {
         let firstCard = setOf[0], secondCard = setOf[1], thirdCard = setOf[2]
         
         guard (firstCard.shape == secondCard.shape && secondCard.shape == thirdCard.shape && firstCard.shape == thirdCard.shape) || (firstCard.shape != secondCard.shape && secondCard.shape != thirdCard.shape && firstCard.shape != thirdCard.shape) else {
+            if !hintEnabled {
+                score += Constants.Penalties.wrongSetFormationPenalty
+            }
             return false;
         }
         
         guard (firstCard.color == secondCard.color && secondCard.color == thirdCard.color && firstCard.color == thirdCard.color) || (firstCard.color != secondCard.color && secondCard.color != thirdCard.color && firstCard.color != thirdCard.color) else {
+            if !hintEnabled {
+                score += Constants.Penalties.wrongSetFormationPenalty
+            }
             return false;
         }
         guard (firstCard.shade == secondCard.shade && secondCard.shade == thirdCard.shade && firstCard.shade == thirdCard.shade) || (firstCard.shade != secondCard.shade && secondCard.shade != thirdCard.shade && firstCard.shade != thirdCard.shade) else {
+            if !hintEnabled {
+                score += Constants.Penalties.wrongSetFormationPenalty
+            }
             return false;
         }
         guard (firstCard.number == secondCard.number && secondCard.number == thirdCard.number && firstCard.number == thirdCard.number) || (firstCard.number != secondCard.number && secondCard.number != thirdCard.number && firstCard.number != thirdCard.number) else {
+            if !hintEnabled {
+                score += Constants.Penalties.wrongSetFormationPenalty
+            }
             return false;
         }
-        score = score + Constants.Game.pointEarnedForSet + Int(0.01 * (curTime - lastNotedTime))
+        if !hintEnabled {
+            score = score + Constants.Game.pointEarnedForSet + Int(0.01 * (curTime - lastNotedTime))
+        }
         return true
+    }
+    
+    mutating func deselectionPenalty() {
+        score += Constants.Penalties.deselectionPenalty
     }
     
     init() {

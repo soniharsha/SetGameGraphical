@@ -11,10 +11,13 @@ import UIKit
 class CardView: UIView {
     
     var card: Card
-    var selected = false { didSet { tapped() } }
+    var selected: Bool { didSet { tapped() } }
+    var hint: Bool { didSet { tapped() } }
     
-    init(frame: CGRect, card: Card) {
+    init(frame: CGRect, card: Card, selected: Bool, hint: Bool) {
         self.card = card
+        self.selected = selected
+        self.hint = hint
         super.init(frame: frame)
     }
 
@@ -42,7 +45,7 @@ class CardView: UIView {
                 Y += 5
                 path.stroke()
             }
-        default: path.stroke(); path.fill()
+        default: path.fill()
         }
     }
     
@@ -60,6 +63,7 @@ class CardView: UIView {
             radius = width / 4
         }
         let spacing = radius * (ConstantCardView.spacingBetweenShapes)
+        
         switch card.number.value {
         case 1: path.addArc(withCenter: CGPoint(x: emojiRect.midX, y: emojiRect.midY), radius: radius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         case 2: path.addArc(withCenter: CGPoint(x: emojiRect.midX, y: emojiRect.midY - radius - spacing), radius: radius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
@@ -151,17 +155,22 @@ class CardView: UIView {
         }
         
         fillColor(at: path, card.color.value, with: card.shade.value)
-        
     }
     
     override func draw(_ rect: CGRect) {
-        if !selected {
+        if hint, !selected {
+            let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
+            UIColor.cyan.setFill()
+            roundedRect.fill()
+            let path = UIBezierPath()
+            drawEmoji(at: path)
+        } else if !hint, !selected {
             let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
             UIColor.white.setFill()
             roundedRect.fill()
             let path = UIBezierPath()
             drawEmoji(at: path)
-        } else {
+        } else if !hint, selected {
             let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
             UIColor.blue.setStroke()
             UIColor.white.setFill()
