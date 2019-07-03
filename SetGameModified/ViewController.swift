@@ -150,7 +150,6 @@ class ViewController: UIViewController {
     }
 
     private func resetGrid() {
-        //clear earlier subviews
         for view in cardGridView.subviews {
             view.removeFromSuperview()
         }
