@@ -15,6 +15,8 @@ struct Constants {
         static let noOfCardToDraw = 3
         static let pointEarnedForSet = 3
         static let totalCard = 81
+        static let loadCardDuration = 1.0
+        static let delayBetweenCards = 0.1
     }
     struct Color {
         static let backgroundColor = UIColor.white
