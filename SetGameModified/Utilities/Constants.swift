@@ -17,6 +17,8 @@ struct Constants {
         static let totalCard = 81
         static let loadCardDuration = 1.0
         static let delayBetweenCards = 0.1
+        static let scoreCardTextSize = 20
+        static let scoreCardAnimatedSize = 30
     }
     struct Color {
         static let backgroundColor = UIColor.white

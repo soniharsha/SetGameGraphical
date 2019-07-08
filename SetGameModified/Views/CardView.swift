@@ -12,12 +12,11 @@ class CardView: UIView {
     
     var card: Card
     var selected: Bool { didSet { tapped() } }
-    var hint: Bool { didSet { tapped() } }
+    var hint = false { didSet { tapped() } }
     
-    init(frame: CGRect, card: Card, selected: Bool, hint: Bool) {
+    init(frame: CGRect, card: Card, selected: Bool) {
         self.card = card
         self.selected = selected
-        self.hint = hint
         super.init(frame: frame)
     }
 
@@ -158,27 +157,29 @@ class CardView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        if hint, !selected {
+        if hint {
             let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
             UIColor.cyan.setFill()
             roundedRect.fill()
             let path = UIBezierPath()
             drawEmoji(at: path)
-        } else if !hint, !selected {
-            let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
-            UIColor.white.setFill()
-            roundedRect.fill()
-            let path = UIBezierPath()
-            drawEmoji(at: path)
-        } else if !hint, selected {
-            let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
-            UIColor.blue.setStroke()
-            UIColor.white.setFill()
-            roundedRect.fill()
-            roundedRect.lineWidth = lineWidth
-            roundedRect.stroke()
-            let path = UIBezierPath()
-            drawEmoji(at: path)
+        } else {
+            if !selected {
+                let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
+                UIColor.white.setFill()
+                roundedRect.fill()
+                let path = UIBezierPath()
+                drawEmoji(at: path)
+            } else {
+                let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
+                UIColor.blue.setStroke()
+                UIColor.white.setFill()
+                roundedRect.fill()
+                roundedRect.lineWidth = lineWidth
+                roundedRect.stroke()
+                let path = UIBezierPath()
+                drawEmoji(at: path)
+            }
         }
     }
 }
