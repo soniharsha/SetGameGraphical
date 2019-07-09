@@ -312,5 +312,16 @@ class SetGameViewController: UIViewController {
             cardView.selected = !cardView.selected
         }
     }
+    
+    func resetGame() {
+        for view in cardGridView.subviews {
+            view.removeFromSuperview()
+        }
+        game = SetGame ()
+        grid = Grid(layout: .dimensions(rowCount: Constants.Game.initialRow, columnCount: Constants.Game.initialColumn), frame: cardGridView.bounds)
+        allotedCards = []
+        totalUsedCards = Constants.Game.initialRow * Constants.Game.initialColumn
+        selectedCards = []
+    }
 }
 
