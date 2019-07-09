@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SetGameModified" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SetGameViewController" customModule="SetGameModified" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3g-7P-yc1" customClass="PlayingCardView" customModule="SetGameModified" customModuleProvider="target">
-                                <rect key="frame" x="16" y="20" width="568" height="438"/>
+                                <rect key="frame" x="16" y="44" width="382" height="676"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -23,7 +27,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-Tj-bpF">
-                                <rect key="frame" x="16" y="570" width="60" height="30"/>
+                                <rect key="frame" x="16" y="832" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OGf-Tj-bpF" secondAttribute="height" multiplier="2:1" id="DAy-YI-AH8"/>
                                     <constraint firstAttribute="height" constant="30" id="hGB-5F-WSW"/>
@@ -34,55 +38,64 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-2U-2NL">
-                                <rect key="frame" x="98" y="551.5" width="486" height="48.5"/>
+                                <rect key="frame" x="98" y="832" width="175" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="740" constant="30" id="DW2-nN-8oz"/>
-                                    <constraint firstAttribute="width" secondItem="gEG-2U-2NL" secondAttribute="height" multiplier="10:1" id="qYm-EC-k6g"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="175" id="45i-lZ-BAk"/>
+                                    <constraint firstAttribute="height" constant="30" id="67n-fl-d6B"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="dealMoreButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2PF-E5-KDW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXm-cJ-YFL">
-                                <rect key="frame" x="279" y="502" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXm-cJ-YFL">
+                                <rect key="frame" x="186" y="764" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xS3-G0-C9D">
-                                <rect key="frame" x="16" y="531" width="568" height="21"/>
+                                <rect key="frame" x="16" y="793" width="257" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBM-h7-R83" customClass="PlayingCardView" customModule="SetGameModified" customModuleProvider="target">
+                                <rect key="frame" x="283" y="793" width="115" height="69"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="IBM-h7-R83" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0ZP-Vg-Ww4"/>
+                            <constraint firstItem="IBM-h7-R83" firstAttribute="leading" secondItem="xS3-G0-C9D" secondAttribute="trailing" constant="10" id="6na-vH-aeb"/>
                             <constraint firstItem="E3g-7P-yc1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8mY-rr-aqO"/>
                             <constraint firstItem="IXm-cJ-YFL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AW3-ik-147"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OGf-Tj-bpF" secondAttribute="bottom" id="BgV-Dy-ARt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gEG-2U-2NL" secondAttribute="trailing" constant="16" id="CQ2-NM-SKf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E3g-7P-yc1" secondAttribute="trailing" constant="16" id="Dbd-og-TVL"/>
                             <constraint firstItem="OGf-Tj-bpF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EKJ-g6-bRi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xS3-G0-C9D" secondAttribute="trailing" constant="16" id="GuR-az-iML"/>
                             <constraint firstItem="gEG-2U-2NL" firstAttribute="leading" secondItem="OGf-Tj-bpF" secondAttribute="trailing" priority="750" constant="22" id="HU8-Ff-6WB"/>
                             <constraint firstItem="E3g-7P-yc1" firstAttribute="centerX" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="O8X-yZ-ZHD"/>
+                            <constraint firstItem="IBM-h7-R83" firstAttribute="leading" secondItem="gEG-2U-2NL" secondAttribute="trailing" constant="10" id="OAR-sN-zHg"/>
                             <constraint firstItem="gEG-2U-2NL" firstAttribute="top" relation="lessThanOrEqual" secondItem="xS3-G0-C9D" secondAttribute="bottom" constant="18" id="PGl-et-g8i"/>
                             <constraint firstItem="IXm-cJ-YFL" firstAttribute="top" relation="lessThanOrEqual" secondItem="E3g-7P-yc1" secondAttribute="bottom" constant="44" id="Uyv-bu-S58"/>
+                            <constraint firstItem="IBM-h7-R83" firstAttribute="top" secondItem="IXm-cJ-YFL" secondAttribute="bottom" constant="8" id="ZKL-zH-awZ"/>
                             <constraint firstItem="xS3-G0-C9D" firstAttribute="top" relation="lessThanOrEqual" secondItem="IXm-cJ-YFL" secondAttribute="bottom" constant="8" id="cGU-iK-uI1"/>
                             <constraint firstItem="OGf-Tj-bpF" firstAttribute="top" relation="lessThanOrEqual" secondItem="xS3-G0-C9D" secondAttribute="bottom" constant="18" id="fY4-ih-gln"/>
                             <constraint firstItem="xS3-G0-C9D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="j7e-4K-SGH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gEG-2U-2NL" secondAttribute="bottom" id="jYJ-Fl-wPC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="E3g-7P-yc1" secondAttribute="bottom" priority="750" constant="142" id="sdx-Eg-iaq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IBM-h7-R83" secondAttribute="trailing" constant="16" id="seQ-3X-X2w"/>
                             <constraint firstItem="E3g-7P-yc1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sgO-3Z-Mha"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="r3v-Im-Q5S"/>
                     <connections>
                         <outlet property="cardGridView" destination="E3g-7P-yc1" id="upu-aM-8Jf"/>
                         <outlet property="dealMoreButton" destination="gEG-2U-2NL" id="7rV-Y3-c21"/>
                         <outlet property="hintButton" destination="OGf-Tj-bpF" id="S3R-bi-D3l"/>
+                        <outlet property="matchedCardView" destination="IBM-h7-R83" id="6bK-A7-FKR"/>
                         <outlet property="resultLabel" destination="IXm-cJ-YFL" id="sl4-ft-C1D"/>
                         <outlet property="scoreCardLabel" destination="xS3-G0-C9D" id="sTt-1h-KZw"/>
                     </connections>
@@ -90,7 +103,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="xQx-oD-iRb"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="125.89285714285714"/>
+            <point key="canvasLocation" x="-468" y="-371"/>
         </scene>
     </scenes>
 </document>

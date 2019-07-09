@@ -84,8 +84,8 @@
 		3AF870FE22C376FC00EE1FA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3AF870EC22C376CB00EE1FA9 /* AppDelegate.swift */,
 				3AF870F522C376CD00EE1FA9 /* LaunchScreen.storyboard */,
+				3AF870EC22C376CB00EE1FA9 /* AppDelegate.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

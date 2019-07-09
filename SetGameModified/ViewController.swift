@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SetGameViewController: UIViewController {
     
     var game = SetGame ()
     
@@ -18,10 +18,6 @@ class ViewController: UIViewController {
         
         return swipeGestureRecogniser
     }()
-    
-//    lazy var cardBehavior = CardBehavior(in: animator)
-//    lazy var animator = UIDynamicAnimator(referenceView: view)
-//    lazy var behavior = CardBehavior(in: animator)
     
     lazy var grid = Grid(layout: .dimensions(rowCount: Constants.Game.initialRow, columnCount: Constants.Game.initialColumn), frame: cardGridView.bounds)
      
@@ -40,6 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var hintButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var scoreCardLabel: UILabel!
+    @IBOutlet weak var matchedCardView: PlayingCardView!
     
     @IBAction func dealMoreButtonTapped(_ sender: UIButton) {
         addMoreCard()
@@ -87,10 +84,34 @@ class ViewController: UIViewController {
         }
     }
     
-    private func setAnimation(in cards: [Card]) {
+    private func setAnimation(in cardviews: [CardView]) {
+        for view in matchedCardView.subviews {
+            view.removeFromSuperview()
+        }
+        let difference = matchedCardView.frame.width / 3
+        var initialx = matchedCardView.frame.origin.x, initialy = matchedCardView.frame.origin.y
+        let height = matchedCardView.frame.height
+        for view in cardviews {
+            UIView.animate(
+                withDuration: 1,
+                delay: 0.5, options: [.curveEaseOut],
+                animations: {
+                    view.frame = CGRect(x: view.frame.midX, y: view.frame.midY, width: view.frame.width, height:view.frame.height)
+                    view.alpha = 0.5
+                },
+                completion: { completion in
+                    view.frame = CGRect(x: initialx, y: initialy, width: difference, height: height)
+                    initialx += difference
+                    self.matchedCardView.addSubview(view)
+                    view.alpha = 1.0
+                })
+        }
+    }
+    
+    private func resultLabelAnimation() {
         UIView.transition(with: resultLabel,
-                          duration: 2,
-                          options: .transitionCurlUp,
+                          duration: 1,
+                          options: .transitionCrossDissolve,
                           animations: { [weak self] in
                             self?.resultLabel.font = UIFont.systemFont(ofSize: CGFloat(Constants.Game.scoreCardAnimatedSize))
                             self?.resultLabel.alpha = 1.0
@@ -126,9 +147,16 @@ class ViewController: UIViewController {
     }
     
     private func addAnimation(withDelay delay: Double, in frame: CGRect, on cardview: CardView) {
-        UIView.animate(withDuration: Constants.Game.loadCardDuration, delay: delay, options: [], animations: {
-            cardview.frame = frame
-        }, completion: nil)
+        UIView.animate(
+            withDuration: Constants.Game.loadCardDuration,
+            delay: delay,
+            options: [],
+            animations: {
+                cardview.frame = frame
+            },
+            completion: { completion in
+                cardview.faceUp = true
+            })
     }
     
     private func addGesture(on cardview: CardView) {
@@ -145,7 +173,9 @@ class ViewController: UIViewController {
             let isSet = game.containsSet(in: cards)
             if isSet {
                 resultLabel.text = "YAY! A SET"
-                setAnimation(in: cards)
+                let currentSelectedCards = selectedCards
+                setAnimation(in: currentSelectedCards)
+                resultLabelAnimation()
                 for cardview in selectedCards {
                     if let index = allotedCards.firstIndex(of: cardview) {
                         allotedCards.remove(at: index)
@@ -154,7 +184,7 @@ class ViewController: UIViewController {
                 addMoreCard()
             } else {
                 resultLabel.text = "OOPS! WRONG SET"
-                setAnimation(in: cards)
+                resultLabelAnimation()
                 for cardview in selectedCards {
                     if let index = allotedCards.firstIndex(of: cardview) {
                         allotedCards[index].selected = !allotedCards[index].selected
@@ -176,11 +206,12 @@ class ViewController: UIViewController {
             let card = game.draw()
             let subFrame = view.convert(dealMoreButton.frame, to: cardGridView)
             let cardShow = CardView(frame: CGRect(x: subFrame.midX, y: subFrame.midY, width: frame.width, height: frame.height), card: card!, selected: false)
-            addAnimation(withDelay: Constants.Game.delayBetweenCards, in: frame, on: cardShow)
+            addAnimation(withDelay: Constants.Game.delayBetweenCards * Double(index), in: frame, on: cardShow)
             addGesture(on: cardShow)
             allotedCards.append(cardShow)
             cardGridView.addSubview(cardShow)
         }
+        
         dealMoreButton.backgroundColor = Constants.Color.backgroundColor
         dealMoreButton.setTitle("DEAL MORE BUTTON", for: .normal)
         dealMoreButton.setTitleColor(Constants.Color.fontColor, for: .normal)
@@ -237,6 +268,7 @@ class ViewController: UIViewController {
             let frame = newgrid[index]!
             let oldFrame = allotedCards[index].frame
             let cardShow = CardView(frame: oldFrame, card: allotedCards[index].card, selected: allotedCards[index].selected)
+            cardShow.faceUp = true
             addAnimation(withDelay: Constants.Game.delayBetweenCards, in: frame, on: cardShow)
             addGesture(on: cardShow)
             if let cardIndexInSelected = selectedCards.firstIndex(of: allotedCards[index]) {
@@ -248,12 +280,14 @@ class ViewController: UIViewController {
         totalUsedCards += Constants.Game.noOfCardToDraw
         
         if totalUsedCards <= Constants.Game.totalCard {
+            var delayIntroduced = 1.0
             for index in allotedCards.count..<noOfCell {
                 let frame = newgrid[index]!
                 let card = game.draw()
                 let subFrame = view.convert(dealMoreButton.frame, to: cardGridView)
                 let cardShow = CardView(frame: CGRect(x: subFrame.midX, y: subFrame.midY, width: frame.width, height: frame.height), card: card!, selected: false)
-                addAnimation(withDelay: Constants.Game.delayBetweenCards, in: frame, on: cardShow)
+                addAnimation(withDelay: Constants.Game.delayBetweenCards * delayIntroduced, in: frame, on: cardShow)
+                delayIntroduced += 1.0
                 addGesture(on: cardShow)
                 allotedCards.append(cardShow)
                 cardGridView.addSubview(cardShow)

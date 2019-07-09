@@ -13,6 +13,7 @@ class CardView: UIView {
     var card: Card
     var selected: Bool { didSet { tapped() } }
     var hint = false { didSet { tapped() } }
+    var faceUp = false { didSet { tapped() }}
     
     init(frame: CGRect, card: Card, selected: Bool) {
         self.card = card
@@ -157,12 +158,16 @@ class CardView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        if hint {
+        if hint, faceUp {
             let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
             UIColor.cyan.setFill()
             roundedRect.fill()
             let path = UIBezierPath()
             drawEmoji(at: path)
+        } else if !hint, !faceUp {
+            if let cardImage = UIImage(named: "faceDown"){
+                cardImage.draw(in: bounds)
+            }
         } else {
             if !selected {
                 let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cardsCornerRadius)
