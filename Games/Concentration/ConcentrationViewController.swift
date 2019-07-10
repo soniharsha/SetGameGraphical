@@ -32,6 +32,11 @@ class ConcentrationViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateStartView()
+    }
+    
     private func updateStopView() {
         //gameControlLabel.backgroundColor = buttonBackgroundColor
         //buttonBackgroundColor = UIColor(red: 193/255, green: 172/255, blue: 230/255, alpha: 1)

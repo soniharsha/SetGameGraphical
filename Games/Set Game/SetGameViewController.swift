@@ -322,6 +322,7 @@ class SetGameViewController: UIViewController {
         allotedCards = []
         totalUsedCards = Constants.Game.initialRow * Constants.Game.initialColumn
         selectedCards = []
+        loadInitialCards()
     }
 }
 
